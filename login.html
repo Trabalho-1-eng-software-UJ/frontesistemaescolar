@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema Escolar</title>
+   <link rel="stylesheet" href="style/login.css">
+   <link rel="shortcut icon" href="image/chapeuformatura.png" type="image/x-icon">
+   <link rel="import" href="pages/portaluno.html">
+   <link rel="import" href="pages/tela_professor.html">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">🎓</div>
+        <h1 class="title">EduSystem</h1>
+        <p style="color: #6c757d; margin-bottom: 25px;">Acesso ao Sistema Escolar</p>
+
+        <div class="demo-credentials">
+            <h4>Credenciais para Teste:</h4>
+            <p><strong>Professor:</strong> prof123 / senha123</p>
+            <p><strong>Aluno:</strong> aluno123 / senha123</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" class="form-control" placeholder="Digite seu usuário" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
+            </div>
+            
+            <button type="submit" class="btn-primary" id="loginBtn">
+                Entrar
+            </button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                Validando credenciais...
+            </div>
+            
+            <div class="forgot-password">
+                <a href="#" onclick="showForgotPassword()">Esqueci minha senha</a>
+            </div>
+            
+            <div id="message" style="display: none;"></div>
+        </form>
+    </div>
+
+    <script src="scripts/login.js"></script>
+</body>
+</html>

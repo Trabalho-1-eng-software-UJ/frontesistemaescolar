@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno - Sistema Escolar</title>
+    <link rel="stylesheet" href="../style/portaluno.css">
+    <link rel="shortcut icon" href="../image/chapeuformatura.png" type="image/x-icon">
+    <link rel="import" href="./tela_professor.html">
+</head>
+<body>
+    <div class="header">
+        <h1>🎓 EduSystem - Portal do Aluno</h1>
+        <div class="user-info">
+            <span>Bem-vindo(a), João Silva - 9º A</span>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2>Painel do Estudante</h2>
+            <p class="student-info">Turma: 9º Ano A • Período Letivo: 2025 • Total de Disciplinas: 8</p>
+        </div>
+
+        <div class="tabs-container">
+            <div class="student-tabs">
+                <button class="student-tab active" onclick="showTab('notas')">
+                    📊 Minhas Notas
+                </button>
+                <button class="student-tab" onclick="showTab('faltas')">
+                    📅 Minhas Faltas
+                </button>
+                <button class="student-tab" onclick="showTab('conteudos')">
+                    📚 Conteúdos
+                </button>
+                <button class="student-tab" onclick="showTab('atividades')">
+                    📋 Atividades
+                </button>
+            </div>
+
+            
+            <div id="notas-tab" class="tab-content active">
+                <h3>Boletim Escolar - 1º Bimestre</h3>
+                
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-number">8.5</div>
+                        <div class="stat-label">Média Geral</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Disciplinas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">96%</div>
+                        <div class="stat-label">Frequência</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="grade-card">
+                        <div>
+                            <h4>Matemática</h4>
+                            <p class="card-subtitle">Prof. Maria Santos</p>
+                            <p style="color: #28a745; font-weight: 500;">Excelente desempenho! Continue assim.</p>
+                        </div>
+                        <div class="grade-display grade-good">8.5</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="grade-card">
+                        <div>
+                            <h4>Português</h4>
+                            <p class="card-subtitle">Prof. Carlos Lima</p>
+                            <p style="color: #17a2b8; font-weight: 500;">Bom aproveitamento nas redações.</p>
+                        </div>
+                        <div class="grade-display grade-good">7.8</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="grade-card">
+                        <div>
+                            <h4>Ciências</h4>
+                            <p class="card-subtitle">Prof. Ana Costa</p>
+                            <p style="color: #28a745; font-weight: 500;">Ótima participação em aula!</p>
+                        </div>
+                        <div class="grade-display grade-excellent">9.2</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="grade-card">
+                        <div>
+                            <h4>História</h4>
+                            <p class="card-subtitle">Prof. Roberto Silva</p>
+                            <p style="color: #ffc107; font-weight: 500;">Precisa melhorar a participação.</p>
+                        </div>
+                        <div class="grade-display grade-average">6.9</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="grade-card">
+                        <div>
+                            <h4>Geografia</h4>
+                            <p class="card-subtitle">Prof. Luciana Alves</p>
+                            <p style="color: #28a745; font-weight: 500;">Excelente nos trabalhos em grupo.</p>
+                        </div>
+                        <div class="grade-display grade-excellent">9.0</div>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div id="faltas-tab" class="tab-content">
+                <h3>Registro de Frequência</h3>
+                
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Total de Faltas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">96%</div>
+                        <div class="stat-label">Frequência Geral</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">200</div>
+                        <div class="stat-label">Aulas Ministradas</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Matemática</h4>
+                    <p class="card-subtitle">Prof. Maria Santos</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <div>
+                            <p><strong>Faltas:</strong> 1 de 40 aulas</p>
+                            <p><strong>Frequência:</strong> 97.5%</p>
+                        </div>
+                        <span class="frequency-badge badge-excellent">Frequência Adequada</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Português</h4>
+                    <p class="card-subtitle">Prof. Carlos Lima</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <div>
+                            <p><strong>Faltas:</strong> 2 de 40 aulas</p>
+                            <p><strong>Frequência:</strong> 95%</p>
+                        </div>
+                        <span class="frequency-badge badge-excellent">Frequência Adequada</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Ciências</h4>
+                    <p class="card-subtitle">Prof. Ana Costa</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <div>
+                            <p><strong>Faltas:</strong> 0 de 40 aulas</p>
+                            <p><strong>Frequência:</strong> 100%</p>
+                        </div>
+                        <span class="frequency-badge badge-excellent">Frequência Perfeita</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>História</h4>
+                    <p class="card-subtitle">Prof. Roberto Silva</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <div>
+                            <p><strong>Faltas:</strong> 1 de 40 aulas</p>
+                            <p><strong>Frequência:</strong> 97.5%</p>
+                        </div>
+                        <span class="frequency-badge badge-excellent">Frequência Adequada</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div id="conteudos-tab" class="tab-content">
+                <h3>Material de Estudo</h3>
+                
+                <div class="card">
+                    <div class="content-item">
+                        <div>
+                            <h4>Equações do 2º Grau - Teoria e Prática</h4>
+                            <p class="card-subtitle">Matemática - Prof. Maria Santos</p>
+                            <p class="content-description">
+                                Material completo sobre equações quadráticas incluindo fórmula de Bhaskara, 
+                                análise gráfica e exercícios resolvidos passo a passo.
+                            </p>
+                            <small style="color: #6c757d;">📅 Publicado em: 25/08/2025</small>
+                        </div>
+                        <button class="download-btn" onclick="downloadContent('matematica-eq2grau.pdf')">
+                            📥 Download
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="content-item">
+                        <div>
+                            <h4>Figuras de Linguagem - Guia Completo</h4>
+                            <p class="card-subtitle">Português - Prof. Carlos Lima</p>
+                            <p class="content-description">
+                                Apresentação interativa sobre metáforas, metonímias, hipérboles e outras 
+                                figuras de linguagem com exemplos da literatura brasileira.
+                            </p>
+                            <small style="color: #6c757d;">📅 Publicado em: 27/08/2025</small>
+                        </div>
+                        <button class="download-btn" onclick="downloadContent('portugues-figuras.pptx')">
+                            📥 Download
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="content-item">
+                        <div>
+                            <h4>Sistema Solar - Documentário Educativo</h4>
+                            <p class="card-subtitle">Ciências - Prof. Ana Costa</p>
+                            <p class="content-description">
+                                Vídeo-aula sobre os planetas do sistema solar, suas características, 
+                                movimento de rotação e translação, e curiosidades astronômicas.
+                            </p>
+                            <small style="color: #6c757d;">📅 Publicado em: 28/08/2025</small>
+                        </div>
+                        <button class="download-btn" onclick="watchVideo('sistema-solar')">
+                            🎥 Assistir
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="content-item">
+                        <div>
+                            <h4>Brasil Colonial - Resumo Ilustrado</h4>
+                            <p class="card-subtitle">História - Prof. Roberto Silva</p>
+                            <p class="content-description">
+                                Resumo visual sobre o período colonial brasileiro, principais eventos, 
+                                economia açucareira e sociedade colonial.
+                            </p>
+                            <small style="color: #6c757d;">📅 Publicado em: 29/08/2025</small>
+                        </div>
+                        <button class="download-btn" onclick="downloadContent('historia-colonial.pdf')">
+                            📥 Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div id="atividades-tab" class="tab-content">
+                <h3>Atividades e Tarefas</h3>
+                
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Pendentes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Concluídas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Em Atraso</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Lista de Exercícios - Função Quadrática</h4>
+                    <p class="card-subtitle">Matemática - Prof. Maria Santos</p>
+                    <p class="content-description">
+                        Resolva os exercícios 1 a 15 da página 142 do livro didático. 
+                        Atenção especial aos problemas contextualizados que envolvem aplicações práticas 
+                        das funções quadráticas no cotidiano.
+                    </p>
+                    <div class="activity-deadline">⏰ Prazo: 05/09/2025 às 23:59</div>
+                </div>
+                
+                <div class="card">
+                    <h4>Redação - Texto Argumentativo</h4>
+                    <p class="card-subtitle">Português - Prof. Carlos Lima</p>
+                    <p class="content-description">
+                        Escreva um texto argumentativo sobre "A importância da leitura na era digital" 
+                        com mínimo de 25 linhas. Utilize pelo menos 3 argumentos diferentes e 
+                        inclua dados ou exemplos para sustentar sua tese.
+                    </p>
+                    <div class="activity-deadline">⏰ Prazo: 08/09/2025 às 23:59</div>
+                </div>
+                
+                <div class="card">
+                    <h4>Pesquisa - Ecossistemas Brasileiros</h4>
+                    <p class="card-subtitle">Ciências - Prof. Ana Costa</p>
+                    <p class="content-description">
+                        Elabore uma pesquisa completa sobre um ecossistema brasileiro de sua escolha. 
+                        A apresentação deve ter 10 minutos e incluir características, flora, fauna 
+                        e impactos ambientais.
+                    </p>
+                    <div class="activity-deadline urgent">⏰ Prazo: 02/09/2025 às 23:59</div>
+                </div>
+
+                <div class="card" style="opacity: 0.7; background: #e8f5e8;">
+                    <h4>✅ Mapa Mental - Revolução Industrial</h4>
+                    <p class="card-subtitle">História - Prof. Roberto Silva</p>
+                    <p class="content-description">
+                        Criar um mapa mental sobre as principais características da Revolução Industrial, 
+                        suas fases e impactos na sociedade moderna.
+                    </p>
+                    <div style="color: #28a745; font-weight: 600; margin-top: 10px;">
+                        ✅ Entregue em: 28/08/2025 • Nota: 9.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/portaluno.js"></script>
+</body>
+</html>

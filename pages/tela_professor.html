@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor - Sistema Escolar</title>
+    <link rel="stylesheet" href="../style/tela_professor.css">
+    <link rel="shortcut icon" href="../image/chapeuformatura.png" type="image/x-icon">
+    <link rel="import" href="./tela_professor.html">
+</head>
+<body>
+    <div class="header">
+        <h1>🎓 EduSystem - Área do Professor</h1>
+        <div class="user-info">
+            <span>Bem-vindo(a), Prof. Maria Santos</span>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div class="sidebar">
+            <h3>Menu Professor</h3>
+            <div class="menu-item active" onclick="showContent('faltas')">
+                <span class="menu-icon">📊</span>
+                Faltas
+            </div>
+            <div class="menu-item" onclick="showContent('notas')">
+                <span class="menu-icon">📝</span>
+                Notas
+            </div>
+            <div class="menu-item" onclick="showContent('conteudos')">
+                <span class="menu-icon">📚</span>
+                Conteúdos
+            </div>
+            <div class="menu-item" onclick="showContent('atividades')">
+                <span class="menu-icon">📋</span>
+                Atividades
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div id="success-banner" class="success-banner"></div>
+
+            
+            <div id="faltas-section" class="content-section active">
+                <div class="content-header">
+                    <h2>Controle de Faltas</h2>
+                    <p>Marque a presença dos alunos na aula de hoje</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Turma/Disciplina <span class="required">*</span></label>
+                    <select class="form-control" id="turma-faltas" required onchange="loadStudents()">
+                        <option value="">Selecione a turma</option>
+                        <option value="9a-matematica">9º A - Matemática</option>
+                        <option value="8b-matematica">8º B - Matemática</option>
+                        <option value="7c-matematica">7º C - Matemática</option>
+                    </select>
+                </div>
+                
+                <div class="student-list" id="student-attendance-list" style="display: none;">
+                    <h4>Lista de Presença - Data: <span id="current-date"></span></h4>
+                    <div id="students-container"></div>
+                    <button class="btn-primary" onclick="saveAttendance()" style="margin-top: 20px;">Salvar Presenças</button>
+                </div>
+            </div>
+
+            
+            <div id="notas-section" class="content-section">
+                <div class="content-header">
+                    <h2>Lançamento de Notas</h2>
+                    <p>Insira as notas dos alunos (escala de 0 a 10)</p>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Turma/Disciplina <span class="required">*</span></label>
+                        <select class="form-control" required>
+                            <option value="">Selecione a turma</option>
+                            <option value="9a-matematica">9º A - Matemática</option>
+                            <option value="8b-matematica">8º B - Matemática</option>
+                            <option value="7c-matematica">7º C - Matemática</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Período de Avaliação</label>
+                        <select class="form-control">
+                            <option value="1bim">1º Bimestre</option>
+                            <option value="2bim">2º Bimestre</option>
+                            <option value="3bim">3º Bimestre</option>
+                            <option value="4bim">4º Bimestre</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="student-list">
+                    <h4>Lançamento de Notas - 1º Bimestre</h4>
+                    <div class="student-item">
+                        <span class="student-name">Ana Silva</span>
+                        <input type="number" class="form-control grade-input" min="0" max="10" step="0.1" value="8.5">
+                    </div>
+                    <div class="student-item">
+                        <span class="student-name">Bruno Santos</span>
+                        <input type="number" class="form-control grade-input" min="0" max="10" step="0.1" value="7.2">
+                    </div>
+                    <div class="student-item">
+                        <span class="student-name">Carla Oliveira</span>
+                        <input type="number" class="form-control grade-input" min="0" max="10" step="0.1" value="9.1">
+                    </div>
+                    <div class="student-item">
+                        <span class="student-name">Diego Ferreira</span>
+                        <input type="number" class="form-control grade-input" min="0" max="10" step="0.1" value="">
+                    </div>
+                    <div class="student-item">
+                        <span class="student-name">Elena Costa</span>
+                        <input type="number" class="form-control grade-input" min="0" max="10" step="0.1" value="">
+                    </div>
+                    
+                    <button class="btn-primary" onclick="saveGrades()" style="margin-top: 20px;">Salvar Notas</button>
+                </div>
+            </div>
+
+            
+            <div id="conteudos-section" class="content-section">
+                <div class="content-header">
+                    <h2>Gerenciar Conteúdos</h2>
+                    <p>Adicione materiais de estudo para seus alunos</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Turma/Disciplina <span class="required">*</span></label>
+                    <select class="form-control" required>
+                        <option value="">Selecione a turma</option>
+                        <option value="9a-matematica">9º A - Matemática</option>
+                        <option value="8b-matematica">8º B - Matemática</option>
+                        <option value="7c-matematica">7º C - Matemática</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Título do Conteúdo</label>
+                    <input type="text" class="form-control" placeholder="Ex: Equações do 2º Grau - Aula 1">
+                </div>
+                
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea class="form-control textarea" placeholder="Descreva o conteúdo, objetivos de aprendizagem e instruções para os alunos..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Material (Upload ou Texto)</label>
+                    <div class="file-upload" onclick="document.getElementById('file-input').click()">
+                        <input type="file" id="file-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt">
+                        <div style="margin-top: 30px;">
+                    <button class="btn-secondary" onclick="clearActivityForm()">Cancelar</button>
+                    <button class="btn-primary" onclick="saveActivity()">Criar Atividade</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/tela_professor.js"></script>
+
+
+       <div style="font-size: 24px; margin-bottom: 10px;">📁</div>
+                            <p>Clique para selecionar arquivo</p>
+                            <small>PDF, DOC, DOCX, PPT, PPTX, TXT</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <button class="btn-secondary" onclick="clearContentForm()">Cancelar</button>
+                    <button class="btn-primary" onclick="saveContent()">Publicar Conteúdo</button>
+                </div>
+            </div>
+
+        
+            <div id="atividades-section" class="content-section">
+                <div class="content-header">
+                    <h2>Criar Atividade</h2>
+                    <p>Defina atividades e estabeleça prazos para entrega</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Turma/Disciplina <span class="required">*</span></label>
+                    <select class="form-control" required>
+                        <option value="">Selecione a turma</option>
+                        <option value="9a-matematica">9º A - Matemática</option>
+                        <option value="8b-matematica">8º B - Matemática</option>
+                        <option value="7c-matematica">7º C - Matemática</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Título da Atividade</label>
+                    <input type="text" class="form-control" placeholder="Ex: Lista de Exercícios - Função Quadrática">
+                </div>
+                
+                <div class="form-group">
+                    <label>Descrição da Atividade</label>
+                    <textarea class="form-control textarea" placeholder="Descreva a atividade, instruções detalhadas, critérios de avaliação e formato de entrega..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prazo de Entrega <span class="required">*</span></label>
+                        <input type="datetime-local" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor da Atividade</label>
+                        <select class="form-control">
+                            <option value="1">1.0 ponto</option>
+                            <option value="2">2.0 pontos</option>
+                            <option value="3">3.0 pontos</option>
+                            <option value="5">5.0 pontos</option>
+                            <option value="10">10.0 pontos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style></div>
+</body>
+</html>
+                         
