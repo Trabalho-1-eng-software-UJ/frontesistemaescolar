@@ -57,11 +57,11 @@
                         if (userType === 'professor') {
                             
                             redirectToPage('professor', userData);
-                            window.location.href = '/pages/tela_professor.html';
+                            window.location.href = '/tela_professor.html';
                         } else if (userType === 'aluno') {
                            
                             redirectToPage('aluno', userData);
-                            window.location.href = '/pages/portaluno.html';
+                            window.location.href = '/portaluno.html';
                         }
                     }, 1500);
                 } else {
