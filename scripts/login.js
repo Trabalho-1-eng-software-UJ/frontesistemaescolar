@@ -79,7 +79,7 @@
 
         function redirectToPage(pageType, userData) {
            
-            const redirectUrl = pageType === 'professor' ? 'professor.html' : 'aluno.html';
+            const redirectUrl = pageType === 'professor' ? 'index3.htmll' : 'index2.html';
             
             showMessage(`Redirecionando para a área do ${pageType}...`, 'success');
             
